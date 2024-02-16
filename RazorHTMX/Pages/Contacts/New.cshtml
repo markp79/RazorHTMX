@@ -1,0 +1,54 @@
+﻿@page
+@model RazorHTMX.Pages.Contacts.NewModel
+@{
+}
+
+<form method="post">
+    <fieldset>
+        <legend>Contact Values</legend>
+        <p>
+            <label asp-for=Contact.Email>Email</label>
+            <input asp-for="Contact.Email">
+            @if (Model.Errors.ContainsKey("email"))
+            {
+                <span class="error">@Model.Errors["email"]</span>
+            }
+        </p>
+        <p>
+            <label asp-for=Contact.First>First</label>
+            <input asp-for="Contact.First">
+            @if (Model.Errors.ContainsKey("first"))
+            {
+                <span class="error">@Model.Errors["first"]</span>
+            }
+        </p>
+        <p>
+            <label asp-for=Contact.Last>Last</label>
+            <input asp-for="Contact.Last">
+            @if (Model.Errors.ContainsKey("last"))
+            {
+                <span class="error">@Model.Errors["last"]</span>
+            }
+        </p>
+        <p>
+            <label asp-for=Contact.Phone>Phone</label>
+            <input asp-for="Contact.Phone">
+            @if (Model.Errors.ContainsKey("phone"))
+            {
+                <span class="error">@Model.Errors["phone"]</span>
+            }
+        </p>
+        <button>Save</button>
+    </fieldset>
+</form>
+
+@if (Model.Contact.Id > 0)
+{
+    <form asp-page-handler="delete" method="post">
+        <button>Delete Contact</button>
+    </form>
+}
+
+<p>
+    <a href="/contacts">Back</a>
+</p>
